@@ -4,7 +4,8 @@ const knex = require('knex');
 const knexConfig = require('../knexfile');
 const bcrypt = require('bcryptjs');
 
-const db= require('../data/userdb');
+//const db= require('../data/userdb');
+const db = knex(knexConfig.development);
 
 router.post('./', async(req, res)=> {
     try{

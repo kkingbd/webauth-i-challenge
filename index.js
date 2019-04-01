@@ -6,10 +6,16 @@ server.use(express.json());
 server.use(helmet());
 
 const login = require('./router/login.js')
-//const register = require('./router/register')
+const register = require('./router/register.js')
+const users =require('./router/users.js')
 
 server.use('/api/login', login);
-//server.use('/api/register', register);
+server.use('/api/register', register);
+server.use('./api/users', users);
+
+server.get('/', (req,res) => {
+  res.send("It is working");
+});
 
 
 const port = 3000;
