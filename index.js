@@ -4,11 +4,10 @@ const helmet= require('helmet');
 
 server.use(express.json());
 server.use(helmet());
-const project = require('./router/login.js')
-const action = require('./router/register.js')
 
-server.use('/api/login', login);
-server.use('/api/register', register);
+const users = require('./router/users.js')
+
+server.use('/api/users', users);
 
 const port = 3000;
 server.listen(port, ()=>  {
