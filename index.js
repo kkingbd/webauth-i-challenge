@@ -11,7 +11,7 @@ const users =require('./router/users.js')
 
 server.use('/api/login', login);
 server.use('/api/register', register);
-server.use('./api/users', users);
+server.use('/api/users', users);
 
 server.get('/', (req,res) => {
   res.send("It is working");
