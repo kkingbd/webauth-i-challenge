@@ -5,9 +5,12 @@ const helmet= require('helmet');
 server.use(express.json());
 server.use(helmet());
 
-const users = require('./router/users.js')
+const login = require('./router/login.js')
+//const register = require('./router/register')
 
-server.use('/api/users', users);
+server.use('/api/login', login);
+//server.use('/api/register', register);
+
 
 const port = 3000;
 server.listen(port, ()=>  {
