@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 
-const Users= require('../data/userdb.js');
+const Users= require('../data/userdb');
 
 router.post('/', (req, res) => {
   let { username, password } = req.body;
@@ -22,4 +22,5 @@ router.post('/', (req, res) => {
       res.status(500).json(error);
     });
 });
+
 module.exports = router;

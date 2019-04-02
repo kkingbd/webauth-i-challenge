@@ -1,9 +1,9 @@
 const session = require('express-session');
 const KnexSessionStore =require('connect-session-knex')(session);
-const configureKnex = require('../data/dbConfig.js');
+const configureKnex = require('../data/dbConfig');
 
 module.exports ={
-  name   : 'monster',
+  name   : 'Kabila',
   secret : 'keep it secret, keep it safe',
   cookie :{
       maxAge : 1000 * 60 * 10,

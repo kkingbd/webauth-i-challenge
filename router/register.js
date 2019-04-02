@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 
-const Users= require('../data/userdb.js')
+const Users= require('../data/userdb')
 
 
 router.post('/', (req, res) => {

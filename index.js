@@ -13,12 +13,14 @@ const login = require('./router/login.js')
 const register = require('./router/register.js')
 const users =require('./router/users.js')
 const logout =require('./router/logout.js')
+const mds = require('./router/mds.js')
 
 server.use(session(sessionConfig));
 server.use('/api/login', login);
 server.use('/api/register', register);
 server.use('/api/users', users);
 server.use('/api/logout', logout);
+server.use('/api/restricted/mds', mds);
 
 server.get('/', (req,res) => {
   res.send("It is working");
