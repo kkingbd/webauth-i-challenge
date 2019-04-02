@@ -1,23 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const knex = require('knex');
-const knexConfig = require('../knexfile');
 const bcrypt = require('bcryptjs');
-//const db= require('../data/userdb')
-const db = knex(knexConfig.development);
 
-router.post('/', async (req, res)=> {
-    try{
-        let credentials =req.body;
-        const hash = bcrypt.hashSync(credentials.password, 12);
-        credentials.password =hash;
-        
-        const newUser = await db('users').insert(credentials);
-        res.status(200).json(newUser);
-    } catch (err){
-        res.status(500).json({message: "There is an error happened, try to register again"});
-    }
-})
+const Users= require('../data/userdb.js')
+
+
+router.post('/', (req, res) => {
+    let user = req.body;
+    const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
+    user.password = hash;
+  
+    Users.add(user)
+      .then(saved => {
+        res.status(201).json(saved);
+      })
+      .catch(error => {
+        res.status(500).json(error);
+      });
+  });
 
 
 module.exports = router;

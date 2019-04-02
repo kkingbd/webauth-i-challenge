@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const knex = require('knex');
-const knexConfig = require('../knexfile');
 const bcrypt = require('bcryptjs');
 
-const userDb= require('../data/userdb');
-//const db = knex(knexConfig.development);
+const userDb= require('../data/userdb.js');
 
 
 router.get('/', restricted, (req, res) => {
@@ -26,7 +23,7 @@ function restricted(req, res, next) {
         .first()
         .then(user => {
           // check tha password guess against the database
-          if (user && bcrypt.compareSync(password, user.password)) {
+          if (user || bcrypt.compareSync(password, user.password)) {
             next();
           } else {
             res.status(401).json({ message: 'You shall not pass!!' });
@@ -39,4 +36,6 @@ function restricted(req, res, next) {
       res.status(401).json({ message: 'Please provide credentials' });
     }
 }
+
+
 module.exports = router;
