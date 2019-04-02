@@ -49,7 +49,7 @@ class Login extends React.Component {
               />
               
               <Button color = 'success' onClick={this.handlePassword}>Log in</Button>
-              <a href= 'https://buildweek-wunderlist.herokuapp.com/api/register'>   
+              <a href= 'https://testing-app-for-react.herokuapp.com/api/register'>   
               <span className= 'textp'> <p> Don't have and account ? <button>Register</button></p></span> </a>
           </Form>
       </LoginBar>

@@ -18,7 +18,7 @@ class App extends Component {
       headers: { authorization : token }
     }
   axios
-    .get("https://testing-app-for-react.herokuapp.com/api/login", request)
+    .get("https://testing-app-for-react.herokuapp.com", request)
     .then(response => {
       this.setState({ users: response.data })
     })
@@ -28,8 +28,9 @@ class App extends Component {
   render() {
   return (
     <div className="App">
-      <Route path ='/login' component = {Login} />
-      <Route path ='/register' component = {Register} />
+      <h1> Hello Welcome to the App</h1>
+      <Route path ='/api/login' component = {Login} />
+      <Route path ='/api/register' component = {Register} />
     </div>
   )
   }
